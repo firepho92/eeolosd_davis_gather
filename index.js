@@ -28,11 +28,11 @@ mongoose.connect(`mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HO
   console.log('connected to mongo atlas')
 })
 
-// setInterval(async () => {
-//   const data = await fetchReadings()
-//   // console.log('last gathering', new Date())
-//   // console.log('gatheredData', data)
-// }, 5 * 60 * 1000)
+setInterval(async () => {
+  const data = await fetchReadings()
+  // console.log('last gathering', new Date())
+  // console.log('gatheredData', data)
+}, 5 * 60 * 1000)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
