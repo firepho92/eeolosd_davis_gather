@@ -24,12 +24,15 @@ app.use((req, res, next) => {
 app.use('/', routes)
 // console.log(`mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}/${MONGODB_DB}?retryWrites=true&w=majority`)
 mongoose.connect(`mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_HOST}/${MONGODB_DB}?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }, (err, res) => {
-  if(err) console.log('Error connecting to database: ' + err)
-  console.log('connected to mongo atlas')
+  if(err) {
+    console.log('Error connecting to database: ' + err)
+  } else {
+    console.log('connected to mongo atlas')
+  }
 })
 
 setInterval(async () => {
-  const data = await fetchReadings()
+  await fetchReadings()
   // console.log('last gathering', new Date())
   // console.log('gatheredData', data)
 }, 5 * 60 * 1000)
